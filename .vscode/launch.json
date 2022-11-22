@@ -1,0 +1,34 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-PhotoappDiscoveryServiceApplication<photoapp-discovery-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "dev.patricksilva.photoappdiscoveryservice.PhotoappDiscoveryServiceApplication",
+            "projectName": "photoapp-discovery-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-PhotoappApiUsersApplication<photoapp-api-users>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "dev.patricksilva.photoappapiusers.PhotoappApiUsersApplication",
+            "projectName": "photoapp-api-users",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ApiGatewayApplication<api-gateway>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "dev.patricksilva.apigateway.ApiGatewayApplication",
+            "projectName": "api-gateway",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
