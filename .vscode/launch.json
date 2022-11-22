@@ -8,7 +8,8 @@
             "mainClass": "dev.patricksilva.photoappdiscoveryservice.PhotoappDiscoveryServiceApplication",
             "projectName": "photoapp-discovery-service",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=37151 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=photoapp-discovery-service"
         },
         {
             "type": "java",
@@ -18,7 +19,8 @@
             "mainClass": "dev.patricksilva.photoappapiusers.PhotoappApiUsersApplication",
             "projectName": "photoapp-api-users",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=41245 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=photoapp-api-users"
         },
         {
             "type": "java",
@@ -27,6 +29,17 @@
             "cwd": "${workspaceFolder}",
             "mainClass": "dev.patricksilva.apigateway.ApiGatewayApplication",
             "projectName": "api-gateway",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=37435 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=api-gateway"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-PhotoappApiAccountManagementApplication<photoapp-api-account-management>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "dev.patricksilva.photoappapiaccountmanagement.PhotoappApiAccountManagementApplication",
+            "projectName": "photoapp-api-account-management",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
