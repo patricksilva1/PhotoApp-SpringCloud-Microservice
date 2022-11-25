@@ -1,5 +1,7 @@
 package dev.patricksilva.photoappapiusers.ui.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +25,7 @@ public class UsersController {
     }
 
     @PostMapping
-    public String createUser(@RequestBody CreateUserRequestModel userDetails) {
+    public String createUser(@Valid @RequestBody CreateUserRequestModel userDetails) {
         return "Create user is called.";
     }
 }
