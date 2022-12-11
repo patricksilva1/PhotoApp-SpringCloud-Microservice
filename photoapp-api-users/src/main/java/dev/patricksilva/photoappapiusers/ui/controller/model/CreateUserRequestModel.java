@@ -8,7 +8,7 @@ public class CreateUserRequestModel {
 
     @NotNull(message = "First name cannot be null")
     @Size(min = 2, message = "Fist name must not be less than two characters")
-    private String firsName;
+    private String firstName;
 
     @NotNull(message = "Last name cannot be null")
     @Size(min = 2, message = "Last name must not be less than two characters")
@@ -23,12 +23,12 @@ public class CreateUserRequestModel {
     private String email;
 
     // #region Getters and Setters
-    public String getFirsName() {
-        return firsName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirsName(String firsName) {
-        this.firsName = firsName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
