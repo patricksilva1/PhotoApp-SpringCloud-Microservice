@@ -12,50 +12,17 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurity {
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         return http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/users/**").permitAll()
+                .antMatchers("/**").hasIpAddress("192.168.1.89")
                 .and().build();
     }
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring()
-                .antMatchers("/users/**");
+                .antMatchers("/**");
     }
-
-    /*
-     * @Bean
-     * public WebSecurityCustomizer webSecurityCustomizer(HttpSecurity http) throws
-     * Exception {
-     * 
-     * http.csrf().disable();
-     * http.authorizeRequests().antMatchers("/users/**").permitAll();
-     * 
-     * return (web) -> web.ignoring().antMatchers("/users/**");
-     * }
-     */
-
-    /*
-     * @Bean
-     * public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-     * return http
-     * .csrf().disable()
-     * .authorizeRequests()
-     * .antMatchers("/users/**").permitAll()
-     * .anyRequest().authenticated()
-     * .and().httpBasic()
-     * .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.
-     * STATELESS)
-     * .and().build();
-     * }
-     * 
-     * @Bean
-     * public WebSecurityCustomizer webSecurityCustomizer() {
-     * return (web) -> web.ignoring()
-     * .antMatchers("/users/**");
-     * }
-     */
 }
