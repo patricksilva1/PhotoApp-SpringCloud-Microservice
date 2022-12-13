@@ -70,7 +70,7 @@ public class UsersServiceImpl implements UsersService {
         if (userEntity == null) {
             throw new UsernameNotFoundException(username);
         }
-        
+
         return new User(userEntity.getEmail(), userEntity.getEncryptedPassword(), true, true, true, true,
                 new ArrayList<>());
     }
@@ -79,8 +79,9 @@ public class UsersServiceImpl implements UsersService {
     public UserDto getUserDetailsByEmail(String email) {
         UserEntity userEntity = usersRepository.findByEmail(email);
 
-        if (userEntity == null)
+        if (userEntity == null) {
             throw new UsernameNotFoundException(email);
+        }
 
         return new ModelMapper().map(userEntity, UserDto.class);
     }
@@ -89,8 +90,9 @@ public class UsersServiceImpl implements UsersService {
     public UserDto getUserByUserId(String userId) {
 
         UserEntity userEntity = usersRepository.findByUserId(userId);
-        if (userEntity == null)
+        if (userEntity == null) {
             throw new UsernameNotFoundException("User not found");
+        }
 
         UserDto userDto = new ModelMapper().map(userEntity, UserDto.class);
 
