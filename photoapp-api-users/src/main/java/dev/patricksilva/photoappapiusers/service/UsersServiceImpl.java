@@ -67,9 +67,10 @@ public class UsersServiceImpl implements UsersService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity userEntity = usersRepository.findByEmail(username);
 
-        if (userEntity == null)
+        if (userEntity == null) {
             throw new UsernameNotFoundException(username);
-
+        }
+        
         return new User(userEntity.getEmail(), userEntity.getEncryptedPassword(), true, true, true, true,
                 new ArrayList<>());
     }
