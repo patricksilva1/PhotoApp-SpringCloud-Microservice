@@ -30,76 +30,76 @@ import io.jsonwebtoken.security.Keys;
 
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    private UsersService usersService;
-    private Environment environment;
+        private UsersService usersService;
+        private Environment environment;
 
-    public AuthenticationFilter(UsersService usersService, Environment environment,
-            AuthenticationManager authenticationManager) {
-        this.usersService = usersService;
-        this.environment = environment;
-        super.setAuthenticationManager(authenticationManager);
-    }
-
-    @Override
-    public Authentication attemptAuthentication(HttpServletRequest req,
-            HttpServletResponse res) throws AuthenticationException {
-        try {
-
-            LoginRequestModel creds = new ObjectMapper()
-                    .readValue(req.getInputStream(), LoginRequestModel.class);
-
-            return getAuthenticationManager().authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            creds.getEmail(),
-                            creds.getPassword(),
-                            new ArrayList<>()));
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        public AuthenticationFilter(UsersService usersService, Environment environment,
+                        AuthenticationManager authenticationManager) {
+                this.usersService = usersService;
+                this.environment = environment;
+                super.setAuthenticationManager(authenticationManager);
         }
-    }
 
-    // (ToDo: I need to add JWT filter later)
-    @Override
-    protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res, FilterChain chain,
-            Authentication auth) throws IOException, ServletException {
-        String userName = ((User) auth.getPrincipal()).getUsername();
-        UserDto userDetails = usersService.getUserDetailsByEmail(userName);
+        @Override
+        public Authentication attemptAuthentication(HttpServletRequest req,
+                        HttpServletResponse res) throws AuthenticationException {
+                try {
 
-        byte[] keyBytes = Decoders.BASE64.decode(environment.getProperty("token.secret"));
+                        LoginRequestModel creds = new ObjectMapper()
+                                        .readValue(req.getInputStream(), LoginRequestModel.class);
 
-        Key key = Keys.hmacShaKeyFor(keyBytes);
+                        return getAuthenticationManager().authenticate(
+                                        new UsernamePasswordAuthenticationToken(
+                                                        creds.getEmail(),
+                                                        creds.getPassword(),
+                                                        new ArrayList<>()));
 
-        String token = Jwts.builder()
-                .setSubject(userDetails.getUserId())
-                .setExpiration(new Date(
-                        System.currentTimeMillis() + Long.parseLong(environment.getProperty("token.expiration_time"))))
-                .signWith(key, SignatureAlgorithm.HS512)
-                .compact();
+                } catch (IOException e) {
+                        throw new RuntimeException(e);
+                }
+        }
 
-        res.addHeader("token", token);
-        res.addHeader("userId", userDetails.getUserId());
-    }
-    /*
-     * 
-     * @Override
-     * protected void successfulAuthentication(HttpServletRequest req,
-     * HttpServletResponse res,
-     * FilterChain chain,
-     * Authentication auth) throws IOException, ServletException {
-     * String userName = ((User) auth.getPrincipal()).getUsername();
-     * UserDto userDetails = usersService.getUserDetailsByEmail(userName);
-     * 
-     * String token = Jwts.builder()
-     * .setSubject(userDetails.getUserId())
-     * .setExpiration(new Date(System.currentTimeMillis() +
-     * Long.parseLong(environment.getProperty("token.expiration_time"))))
-     * .signWith(SignatureAlgorithm.HS512, environment.getProperty("token.secret") )
-     * .compact();
-     * 
-     * res.addHeader("token", token);
-     * res.addHeader("userId", userDetails.getUserId());
-     * }
-     */
+        @Override
+        protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res, FilterChain chain,
+                        Authentication auth) throws IOException, ServletException {
 
+                String userName = ((User) auth.getPrincipal()).getUsername();
+                UserDto userDetails = usersService.getUserDetailsByEmail(userName);
+
+                byte[] keyBytes = Decoders.BASE64.decode(environment.getProperty("token.secret"));
+
+                Key key = Keys.hmacShaKeyFor(keyBytes);
+
+                String token = Jwts.builder()
+                                .setSubject(userDetails.getUserId())
+                                .setExpiration(new Date(
+                                                System.currentTimeMillis() + Long.parseLong(
+                                                                environment.getProperty("token.expiration_time"))))
+                                .signWith(key, SignatureAlgorithm.HS512)
+                                .compact();
+
+                res.addHeader("token", token);
+                res.addHeader("userId", userDetails.getUserId());
+        }
+        /*
+         * 
+         * @Override
+         * protected void successfulAuthentication(HttpServletRequest req,
+         * HttpServletResponse res,
+         * FilterChain chain,
+         * Authentication auth) throws IOException, ServletException {
+         * String userName = ((User) auth.getPrincipal()).getUsername();
+         * UserDto userDetails = usersService.getUserDetailsByEmail(userName);
+         * 
+         * String token = Jwts.builder()
+         * .setSubject(userDetails.getUserId())
+         * .setExpiration(new Date(System.currentTimeMillis() +
+         * Long.parseLong(environment.getProperty("token.expiration_time"))))
+         * .signWith(SignatureAlgorithm.HS512, environment.getProperty("token.secret") )
+         * .compact();
+         * 
+         * res.addHeader("token", token);
+         * res.addHeader("userId", userDetails.getUserId());
+         * }
+         */
 }
