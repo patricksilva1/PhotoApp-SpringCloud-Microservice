@@ -66,10 +66,8 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         String userName = ((User) auth.getPrincipal()).getUsername();
         UserDto userDetails = usersService.getUserDetailsByEmail(userName);
 
-        String secret = environment.getProperty("token.secret");
+        byte[] keyBytes = Decoders.BASE64.decode(environment.getProperty("token.secret"));
 
-        byte[] keyBytes = Decoders.BASE64.decode(secret);
-        
         Key key = Keys.hmacShaKeyFor(keyBytes);
 
         String token = Jwts.builder()
@@ -82,4 +80,26 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         res.addHeader("token", token);
         res.addHeader("userId", userDetails.getUserId());
     }
+    /*
+     * 
+     * @Override
+     * protected void successfulAuthentication(HttpServletRequest req,
+     * HttpServletResponse res,
+     * FilterChain chain,
+     * Authentication auth) throws IOException, ServletException {
+     * String userName = ((User) auth.getPrincipal()).getUsername();
+     * UserDto userDetails = usersService.getUserDetailsByEmail(userName);
+     * 
+     * String token = Jwts.builder()
+     * .setSubject(userDetails.getUserId())
+     * .setExpiration(new Date(System.currentTimeMillis() +
+     * Long.parseLong(environment.getProperty("token.expiration_time"))))
+     * .signWith(SignatureAlgorithm.HS512, environment.getProperty("token.secret") )
+     * .compact();
+     * 
+     * res.addHeader("token", token);
+     * res.addHeader("userId", userDetails.getUserId());
+     * }
+     */
+
 }

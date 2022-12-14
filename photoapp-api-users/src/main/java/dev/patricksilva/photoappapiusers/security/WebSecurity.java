@@ -24,8 +24,7 @@ public class WebSecurity {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public WebSecurity(Environment environment, UsersService usersService,
-            BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public WebSecurity(Environment environment, UsersService usersService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.environment = environment;
         this.usersService = usersService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
@@ -35,8 +34,7 @@ public class WebSecurity {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
 
         // Configure AuthenticationManagerBuilder
-        AuthenticationManagerBuilder authenticationManagerBuilder = http
-                .getSharedObject(AuthenticationManagerBuilder.class);
+        AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
         authenticationManagerBuilder.userDetailsService(usersService).passwordEncoder(bCryptPasswordEncoder);
 
         // Get AuthenticationManager
@@ -59,11 +57,9 @@ public class WebSecurity {
         return http.build();
     }
 
-    protected AuthenticationFilter getAuthenticationFilter(AuthenticationManager authenticationManager)
-            throws Exception {
+    protected AuthenticationFilter getAuthenticationFilter(AuthenticationManager authenticationManager) throws Exception {
         final AuthenticationFilter filter = new AuthenticationFilter(usersService, environment, authenticationManager);
         filter.setFilterProcessesUrl(environment.getProperty("login.url.path"));
         return filter;
     }
-
 }
