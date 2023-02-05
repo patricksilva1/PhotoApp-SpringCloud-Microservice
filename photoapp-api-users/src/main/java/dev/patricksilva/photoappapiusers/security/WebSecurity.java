@@ -43,7 +43,7 @@ public class WebSecurity {
         http
                 .cors().and()
                 .csrf().disable().authorizeRequests()
-                .antMatchers("/**").hasIpAddress(environment.getProperty("gateway.ip"))
+                .requestMatchers("/**").hasIpAddress(environment.getProperty("gateway.ip"))
                 .anyRequest().authenticated().and()
 
                 .addFilter(getAuthenticationFilter(authenticationManager))

@@ -1,6 +1,6 @@
 package dev.patricksilva.photoappapiusers.ui.controller;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
