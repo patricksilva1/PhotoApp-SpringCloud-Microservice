@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 public class CreateUserRequestModel {
 
     @NotNull(message = "First name cannot be null")
-    @Size(min = 2, message = "Fist name must not be less than two characters")
+    @Size(min = 2, message = "First name must not be less than two characters")
     private String firstName;
 
     @NotNull(message = "Last name cannot be null")

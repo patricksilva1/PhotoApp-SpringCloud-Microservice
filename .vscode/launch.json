@@ -42,6 +42,16 @@
             "projectName": "photoapp-api-account-management",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-PhotoappApiGatewayApplication<photoapp-api-gateway>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "dev.patricksilva.photoappapigateway.PhotoappApiGatewayApplication",
+            "projectName": "photoapp-api-gateway",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
