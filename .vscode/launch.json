@@ -2,6 +2,28 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch PhotoappApiAccountManagementApplication",
+            "request": "launch",
+            "mainClass": "dev.patricksilva.photoappapiaccountmanagement.PhotoappApiAccountManagementApplication",
+            "projectName": "photoapp-api-account-management"
+        },
+        {
+            "type": "java",
+            "name": "Launch PhotoappUsersApplication",
+            "request": "launch",
+            "mainClass": "dev.patricksilva.photoappgateway.PhotoappUsersApplication",
+            "projectName": "photoapp-gateway",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=44721 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=photoapp-gateway"
+        },
+        {
+            "type": "java",
+            "name": "Launch PhotoappApiGatewayApplication",
+            "request": "launch",
+            "mainClass": "dev.patricksilva.photoappapigateway.PhotoappApiGatewayApplication",
+            "projectName": "photoapp-api-gateway"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-PhotoappDiscoveryServiceApplication<photoapp-discovery-service>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
@@ -9,49 +31,7 @@
             "projectName": "photoapp-discovery-service",
             "args": "",
             "envFile": "${workspaceFolder}/.env",
-            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=37151 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=photoapp-discovery-service"
-        },
-        {
-            "type": "java",
-            "name": "Spring Boot-PhotoappApiUsersApplication<photoapp-api-users>",
-            "request": "launch",
-            "cwd": "${workspaceFolder}",
-            "mainClass": "dev.patricksilva.photoappapiusers.PhotoappApiUsersApplication",
-            "projectName": "photoapp-api-users",
-            "args": "",
-            "envFile": "${workspaceFolder}/.env",
-            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=41245 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=photoapp-api-users"
-        },
-        {
-            "type": "java",
-            "name": "Spring Boot-ApiGatewayApplication<api-gateway>",
-            "request": "launch",
-            "cwd": "${workspaceFolder}",
-            "mainClass": "dev.patricksilva.apigateway.ApiGatewayApplication",
-            "projectName": "api-gateway",
-            "args": "",
-            "envFile": "${workspaceFolder}/.env",
-            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=37435 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=api-gateway"
-        },
-        {
-            "type": "java",
-            "name": "Spring Boot-PhotoappApiAccountManagementApplication<photoapp-api-account-management>",
-            "request": "launch",
-            "cwd": "${workspaceFolder}",
-            "mainClass": "dev.patricksilva.photoappapiaccountmanagement.PhotoappApiAccountManagementApplication",
-            "projectName": "photoapp-api-account-management",
-            "args": "",
-            "envFile": "${workspaceFolder}/.env"
-        },
-        {
-            "type": "java",
-            "name": "Spring Boot-PhotoappApiGatewayApplication<photoapp-api-gateway>",
-            "request": "launch",
-            "cwd": "${workspaceFolder}",
-            "mainClass": "dev.patricksilva.photoappapigateway.PhotoappApiGatewayApplication",
-            "projectName": "photoapp-api-gateway",
-            "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=46379 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=photoapp-discovery-service"
         }
     ]
 }

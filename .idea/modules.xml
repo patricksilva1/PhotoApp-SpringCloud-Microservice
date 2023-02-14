@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/PhotoApp-SpringCloud-Microservice.iml" filepath="$PROJECT_DIR$/.idea/PhotoApp-SpringCloud-Microservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/photoapp-api-account-management/photoapp-api-account-management.iml" filepath="$PROJECT_DIR$/photoapp-api-account-management/photoapp-api-account-management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/photoapp-api-gateway/photoapp-api-gateway.iml" filepath="$PROJECT_DIR$/photoapp-api-gateway/photoapp-api-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/photoapp-discovery-service/photoapp-discovery-service.iml" filepath="$PROJECT_DIR$/photoapp-discovery-service/photoapp-discovery-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/photoapp-users/photoapp-users.iml" filepath="$PROJECT_DIR$/photoapp-users/photoapp-users.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="photoapp-api-gateway" />
+        <module name="photoapp-discovery-service" />
+        <module name="photoapp-users" />
+        <module name="photoapp-api-account-management" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="photoapp-api-account-management" target="19" />
+      <module name="photoapp-api-gateway" target="19" />
+      <module name="photoapp-api-users" target="19" />
+      <module name="photoapp-discovery-service" target="19" />
+      <module name="photoapp-users" target="19" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="photoapp-api-account-management" options="-parameters" />
+      <module name="photoapp-api-gateway" options="-parameters" />
+      <module name="photoapp-api-users" options="-parameters" />
+      <module name="photoapp-discovery-service" options="-parameters" />
+      <module name="photoapp-users" options="-parameters" />
+    </option>
+  </component>
+</project>
