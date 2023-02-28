@@ -1,7 +1,11 @@
-package dev.patricksilva.photoappgateway.service;
+package dev.patricksilva.photoappusers.service;
 
-import dev.patricksilva.photoappgateway.shared.UserDto;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
-public interface UsersService {
-    UserDto createUser(UserDto userDetails);
+import dev.patricksilva.photoappusers.shared.UserDto;
+
+public interface UsersService extends UserDetailsService {
+	UserDto createUser(UserDto userDetails);
+
+	UserDto getUserDetailsByEmail(String email);
 }

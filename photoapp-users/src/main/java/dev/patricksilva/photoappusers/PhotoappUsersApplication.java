@@ -1,4 +1,4 @@
-package dev.patricksilva.photoappgateway;
+package dev.patricksilva.photoappusers;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

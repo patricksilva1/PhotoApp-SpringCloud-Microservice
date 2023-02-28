@@ -1,6 +1,7 @@
 package dev.patricksilva.photoappapigateway.filters;
 
 import java.util.Set;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -15,34 +16,34 @@ import reactor.core.publisher.Mono;
 @Component
 public class MyPreFilter implements GlobalFilter, Ordered {
 
-    final Logger logger = LoggerFactory.getLogger(MyPreFilter.class);
+	final Logger logger = LoggerFactory.getLogger(MyPreFilter.class);
 
-    @Override
-    public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+	@Override
+	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 
-        logger.info("My first Pre-filter is executed...");
+		logger.info("My first Pre-filter is executed...");
 
-        String requestPath = exchange.getRequest().getPath().toString();
-        logger.info("Request path = " + requestPath);
+		String requestPath = exchange.getRequest().getPath().toString();
+		logger.info("Request path = " + requestPath);
 
-        HttpHeaders headers = exchange.getRequest().getHeaders();
+		HttpHeaders headers = exchange.getRequest().getHeaders();
 
-        Set<String> headerNames = headers.keySet();
+		Set<String> headerNames = headers.keySet();
 
-        headerNames.forEach((headerName) -> {
+		headerNames.forEach((headerName) -> {
 
-            String headerValue = headers.getFirst(headerName);
-            logger.info(headerName + " " + headerValue);
+			String headerValue = headers.getFirst(headerName);
+			logger.info(headerName + " " + headerValue);
 
-        });
+		});
 
-        return chain.filter(exchange);
-    }
+		return chain.filter(exchange);
+	}
 
-    @Override
-    public int getOrder() {
+	@Override
+	public int getOrder() {
 
-        return 0;
-    }
+		return 0;
+	}
 
 }
