@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DiscoveryServiceApplication",
+            "request": "launch",
+            "mainClass": "dev.patricksilva.DiscoveryServiceApplication",
+            "projectName": "discoveryServuce"
+        },
+        {
+            "type": "java",
             "name": "PhotoappUsersApplication",
             "request": "launch",
             "mainClass": "dev.patricksilva.photoappusers.PhotoappUsersApplication",
@@ -27,7 +34,8 @@
             "name": "Launch PhotoappApiGatewayApplication",
             "request": "launch",
             "mainClass": "dev.patricksilva.photoappapigateway.PhotoappApiGatewayApplication",
-            "projectName": "photoapp-api-gateway"
+            "projectName": "photoapp-api-gateway",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=43859 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=photoapp-api-gateway"
         },
         {
             "type": "java",
@@ -39,6 +47,16 @@
             "args": "",
             "envFile": "${workspaceFolder}/.env",
             "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=46379 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=photoapp-discovery-service"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-PhotoappConfigServerApplication<photoapp-config-server>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "dev.patricksilva.PhotoappConfigServerApplication",
+            "projectName": "photoapp-config-server",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
